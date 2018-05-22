@@ -1,0 +1,15 @@
+#!/bin/bash
+substr(){
+    local length=${3}
+    if [ -z "${length}" ]; then
+        length=$((${#1} - ${2}))
+    fi
+    local str=${1:${2}:${length}}
+    if [ "${#str}" -eq "${#1}" ]; then
+        echo "${1}"
+    else
+        echo "${str}"
+    fi
+}
+# str="windows should should die"
+substr "${1}" "${2}" "${3}" # ow

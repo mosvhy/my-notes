@@ -1,0 +1,18 @@
+#!/bin/bash
+strpos(){
+    local str=${1}
+    local offset=${3}
+    if [ -n "${offset}" ]; then
+        str=`substr "${str}" ${offset}`
+    else
+        offset=0
+    fi
+    str=${str/${2}*/}
+
+    if [ "${#str}" -eq "${#1}" ]; then
+        return 0
+    fi
+    echo $((${#str}+${offset}))
+}
+# str="windows should should die"
+strpos "${1}" "${2}" # 1

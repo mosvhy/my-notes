@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# Make your default localhost on '/var/www/html' dynamicly.
+# This program need `strpos()` function. So, you can add or linkin strpos file to '/bin/bash' or '/usr/bin/env'
+
+# First, move your default html folder inside '/var/www' to new path like '/var/www/default', or you can remove it.
+
+unlink '/var/www/html'
+if [[ $1 == '.' || $1 == '/' || $1 == './' || `strpos $1 .` == '0' || `strpos $1 ./` == '0' || `strpos $1 /` != '0' ]]; then
+	newpath=`pwd`/$1
+else
+	newpath=$1
+fi
+ln -s $newpath '/var/www/html'
