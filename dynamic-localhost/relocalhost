@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# Since ln not supported hard link for directory, and ln must use full path, so i make it simple
 # Make your default localhost on '/var/www/html' dynamicly.
 # This program need `strpos()` function. So, you can add or linkin strpos file to '/bin/bash' or '/usr/bin/env'
 
@@ -12,3 +13,11 @@ else
 	newpath=$1
 fi
 ln -s $newpath '/var/www/html'
+
+# Example command
+## $ relocalhost . 
+## $ relocalhost ./
+## $ relocalhost ./public_html
+## $ relocalhost public_html
+## $ relocalhost example_site.com/public_html
+## $ relocalhost /home/example_site.com/public_html
