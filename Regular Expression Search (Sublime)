@@ -1,0 +1,12 @@
+HTML Files:
+  (<link.*href=")(((?!http|//).)*?)"
+  (<script.*?src=")(((?!http|//).)*?)"
+  (<img.*?src=")(((?!http|//).)*?)"
+  Replace With:
+    $1base_url('assets/$2')"
+  
+  first char until meet 'text', search passing multi line
+  ((.|\n)*) text -->
+
+remove all comment follow by // or between /* */ and some necessary empty line
+(^.*?/\*((|\n).)*?\*/\n)|(^\s+//.*$\n)|(//.*?$)|(^\s+\n)
